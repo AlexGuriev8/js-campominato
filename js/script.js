@@ -31,21 +31,28 @@ while (numeriUtente.length < 5) {
     
     if (trovaElemento(numeriUtente, numeroUtente)) {
         alert('Non puoi inserire lo stesso numero');
-    }
-    switch (trovaElemento(list, numeroUtente)) {
-        case true:
-            alert('Hai perso');
-            console.log('Hai inserito un numero consentito ' + numeriUtente.length + ' volte');
+    } else if ((numeroUtente < 1 || numeroUtente > 100)){
+        alert('Il numero non rientra nel range');
+    } else if (isNaN(numeroUtente)) {
+        alert('Il numero inserito non è un numero');
+    }else{
+        switch (trovaElemento(list, numeroUtente)) {
+            case true:
+                alert('Hai perso');
+                console.log('Hai inserito un numero consentito ' + numeriUtente.length + ' volte');
+                console.log(numeriUtente);
+                numeriUtente = [];
+                break;
+            case false:
+                numeriUtente.push(numeroUtente);
+                break;
+        }
+        if (numeriUtente.length == (5)) {
+            console.log('Hai vinto in ' + numeriUtente.length + ' tentativi');
             console.log(numeriUtente);
-            numeriUtente= [];
-            break;
-        case false:
-            numeriUtente.push(numeroUtente);  
+        }
     }
-    if (numeriUtente.length == (5)) {
-        console.log('Hai vinto in ' + numeriUtente.length + ' tentativi');
-        console.log(numeriUtente);
-    }
+    
     i++;
 }
 
