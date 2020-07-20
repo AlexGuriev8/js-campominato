@@ -13,11 +13,11 @@ con difficoltà 2 => tra 1 e 50 */
 var list = [];
 var numeriUtente = [];
 var i = 0;
-var boom = false;
+var cerca = false;
 
 while(list.length < 16 ){
     var numero = getRndInteger(1, 100);
-    var elemento = trovaElemento(list, numero)
+    var elemento = trovaElemento(list, numero);
      if (elemento != true){
         list.push(numero);
     } 
@@ -28,19 +28,26 @@ console.log(list);
 while (numeriUtente.length < 5) {
     var numeroUtente = parseInt(prompt('Inserisci un numero'));
     var numeroTrovato = trovaElemento(numeriUtente, numeroUtente);
-    var cerca = trovaElemento(list, numeroUtente);
-    if (numeroTrovato != true) {
-        numeriUtente.push(numeroUtente);
-    }else {
-        alert('Non puoi inserire lo stesso numero')
+    
+    if (trovaElemento(numeriUtente, numeroUtente)) {
+        alert('Non puoi inserire lo stesso numero');
+    }
+    switch (trovaElemento(list, numeroUtente)) {
+        case true:
+            alert('Hai perso');
+            console.log('Hai inserito un numero consentito ' + numeriUtente.length + ' volte');
+            console.log(numeriUtente);
+            numeriUtente= [];
+            break;
+        case false:
+            numeriUtente.push(numeroUtente);  
+    }
+    if (numeriUtente.length == (5)) {
+        console.log('Hai vinto in ' + numeriUtente.length + ' tentativi');
+        console.log(numeriUtente);
     }
     i++;
 }
-
-
-
-console.log(numeriUtente);
-
 
 
 
