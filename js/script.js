@@ -19,7 +19,6 @@ do{
     var scelta = parseInt(prompt('Inserisci un numero per la scelta 0, 1 oppure 2)'));
 } while(scelta >2 || scelta <0);
 
-
 switch (scelta) {
     case 0:
         var  massimo = 100;
@@ -45,7 +44,6 @@ while(list.length < 16 ){
 }
 console.log(list);
 
-
 var possibilita = massimo - list.length;
 
 while(numeriUtente.length < possibilita && trovato ==false) {
@@ -53,8 +51,6 @@ while(numeriUtente.length < possibilita && trovato ==false) {
     while (numeroUtente <= 0 || numeroUtente > massimo){
         var numeroUtente = parseInt(prompt('Attenzione, hai inserito un numero fuori dal range! Inserisci un numero da 1 a' + massimo));
     }
-  
-    //controllo se il numero è una bomba
     if (trovaElemento(list, numeroUtente)){
         trovato = true;
     } else if (trovaElemento(numeriUtente, numeroUtente) == false) {
@@ -65,42 +61,12 @@ while(numeriUtente.length < possibilita && trovato ==false) {
 }
 console.log(numeriUtente);
 
-
 if(trovato){
     alert('Hai perso! Con punteggio ' + numeriUtente.length)
     
 }else {
     alert('Hai vinto');
 }
-
-/* while (numeriUtente.length < (max - 16)) {
-    var numeroUtente = parseInt(prompt('Inserisci un numero'));
-    var numeroTrovato = trovaElemento(numeriUtente, numeroUtente);
-    
-    if (trovaElemento(numeriUtente, numeroUtente)) {
-        alert('Non puoi inserire lo stesso numero');
-    } else if ((numeroUtente < min || numeroUtente > max)){
-        alert('Il numero non rientra nel range');
-    } else{
-        switch (trovaElemento(list, numeroUtente)) {
-            case true:
-                alert('Hai perso');
-                console.log('Hai inserito un numero consentito ' + numeriUtente.length + ' volte');
-                console.log(numeriUtente);
-                numeriUtente = [];
-                break;
-            case false:
-                numeriUtente.push(numeroUtente);
-                break;
-        }
-        if (numeriUtente.length == (max - 16)) {
-            console.log('Hai vinto in ' + numeriUtente.length + ' tentativi');
-            console.log(numeriUtente);
-        }
-    }
-    
-    i++;
-} */
 
 
 //function
